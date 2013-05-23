@@ -59,7 +59,7 @@ namespace umbraco.webservices.documents
                     property.Value = updatedproperty.PropertyValue;
                 }
             }
-
+            newDoc.Save();
             // We check the publishaction and do the appropiate
             handlePublishing(newDoc, carrier, user);
 
