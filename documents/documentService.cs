@@ -201,6 +201,7 @@ namespace umbraco.webservices.documents
                     }
                 }
             }
+            doc.Save();
             handlePublishing(doc, carrier, user);
         }
 
