@@ -231,7 +231,7 @@ namespace umbraco.webservices.documents
 
             try
             {
-                doc.delete();
+                doc.delete(true);                
             }
             catch (Exception ex)
             {
