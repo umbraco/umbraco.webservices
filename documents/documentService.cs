@@ -60,6 +60,8 @@ namespace umbraco.webservices.documents
                 }
             }
 
+            newDoc.Save();
+
             // We check the publishaction and do the appropiate
             handlePublishing(newDoc, carrier, user);
 
@@ -244,33 +246,14 @@ namespace umbraco.webservices.documents
             switch (carrier.PublishAction)
             {
                 case documentCarrier.EPublishAction.Publish:
-                    if (doc.PublishWithResult(user))
-                    {
-                        umbraco.library.UpdateDocumentCache(doc);
-                    }
-                    break;
+                  doc.PublishWithResult(user);
+                  break;
                 case documentCarrier.EPublishAction.Unpublish:
-                    if (doc.PublishWithResult(user))
-                    {
-                        umbraco.library.UnPublishSingleNode(doc);
-                    }
-                    break;
+                  doc.PublishWithResult(user);
+                  break;
                 case documentCarrier.EPublishAction.Ignore:
-                    if (doc.Published)
-                    {
-                        if (doc.PublishWithResult(user))
-                        {
-                            umbraco.library.UpdateDocumentCache(doc);
-                        }
-                    }
-                    else
-                    {
-                        if (doc.PublishWithResult(user))
-                        {
-                            umbraco.library.UpdateDocumentCache(doc);
-                        }
-                    }
-                    break;
+                  doc.PublishWithResult(user);
+                  break;
             }
         }
 
@@ -286,6 +269,7 @@ namespace umbraco.webservices.documents
             try
             {
                 carrier.ParentID = doc.Parent.Id;
+                carrier.DocumentTypeID = doc.ContentType.Id;
             }
             catch
             {
