@@ -6,3 +6,5 @@ Following the security issue [described here](http://umbraco.com/follow-us/blog-
 This version has been secured so it is once again safe to use.
 
 After building the project, you'll find the necessary files in the /Release folder of this project. Copy the two folders to the root of your Umbraco site and you should be good to go.
+
+The webservices project has been **discontinued** and will not receive further updates. We've switched to using superior WebAPI endpoints in the core of Umbraco.
