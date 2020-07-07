@@ -59,7 +59,7 @@ namespace umbraco.webservices.documents
                     property.Value = updatedproperty.PropertyValue;
                 }
             }
-
+            newDoc.Save();
             // We check the publishaction and do the appropiate
             handlePublishing(newDoc, carrier, user);
 
@@ -201,6 +201,7 @@ namespace umbraco.webservices.documents
                     }
                 }
             }
+            doc.Save();
             handlePublishing(doc, carrier, user);
         }
 
@@ -230,7 +231,7 @@ namespace umbraco.webservices.documents
 
             try
             {
-                doc.delete();
+                doc.delete(true);                
             }
             catch (Exception ex)
             {
